@@ -15,7 +15,8 @@ jobs:
  - name : build with Haven 
    env: 
     SONAR_TOKEN: '${{secrets.SONAR_TOKEN}}'
-   run:  mvn –B package
+   run:  mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -D sonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
+
 
 
 
