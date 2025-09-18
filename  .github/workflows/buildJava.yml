@@ -7,15 +7,16 @@ jobs:
  runs-on: uuntu-latest
 
  steps: 
- - uses: actions/checkout@v4
- - uses: actions/setup-java@v4
-   with: 
-   java version: 21
-   distribution: 'coretto'
- - name : build with Haven 
-   env: 
-     SONAR_TOKEN: '${{secrets.SONAR_TOKEN}}'
-   run:  mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -D sonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
+   - uses: actions/checkout@v4
+   - uses: actions/setup-java@v4
+     with: 
+       
+       java version: 21
+       distribution: 'coretto'
+   - name : build with Haven 
+     env: 
+       SONAR_TOKEN: '${{secrets.SONAR_TOKEN}}'
+     run:  mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -D sonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
 
 
 
